@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>cheehow lee</title>
+<meta name="description" content="cheehow lee — Freelance Workflow Transformation Consultant">
+<style>
+  :root {
+    --bg: #FBF3E9;
+    --ink: #3A332C;
+    --ink-soft: #6B6153;
+    --card: #FFFDF9;
+    --terracotta: #C86B4A;
+    --terracotta-dark: #B15A3B;
+    --sage: #8FA37E;
+    --sage-dark: #79906A;
+    --shadow: 0 8px 24px rgba(58, 51, 44, 0.10);
+    --shadow-active: 0 3px 10px rgba(58, 51, 44, 0.12);
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+  }
+
+  body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+    isolation: isolate;
+  }
+
+  /* Ambient background blobs */
+  .blobs {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.45;
+    will-change: transform;
+  }
+
+  .blob--1 {
+    width: 60vmax;
+    height: 60vmax;
+    top: -20vmax;
+    left: -20vmax;
+    background: radial-gradient(circle at 30% 30%, var(--terracotta), transparent 70%);
+    animation: drift1 26s ease-in-out infinite;
+  }
+
+  .blob--2 {
+    width: 55vmax;
+    height: 55vmax;
+    bottom: -22vmax;
+    right: -18vmax;
+    background: radial-gradient(circle at 60% 60%, var(--sage), transparent 70%);
+    animation: drift2 32s ease-in-out infinite;
+  }
+
+  .blob--3 {
+    width: 40vmax;
+    height: 40vmax;
+    top: 30%;
+    right: -15vmax;
+    background: radial-gradient(circle, #F3D9BE, transparent 70%);
+    animation: drift3 22s ease-in-out infinite;
+  }
+
+  @keyframes drift1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(6%, 8%) scale(1.08); }
+  }
+  @keyframes drift2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-5%, -6%) scale(1.06); }
+  }
+  @keyframes drift3 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-8%, 5%) scale(1.1); }
+  }
+
+  main {
+    width: 100%;
+    max-width: 420px;
+    padding: 48px 24px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  @media (min-width: 640px) {
+    main { max-width: 460px; padding-top: 72px; }
+  }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(14px);
+    animation: fadeUp 0.7s ease forwards;
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .avatar {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--terracotta), var(--sage));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    font-weight: 600;
+    color: #FFFDF9;
+    box-shadow: var(--shadow);
+    animation-delay: 0.02s;
+    letter-spacing: 0.5px;
+  }
+
+  h1 {
+    margin: 20px 0 4px;
+    font-size: clamp(24px, 6vw, 30px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    animation-delay: 0.12s;
+  }
+
+  .role {
+    margin: 0;
+    font-size: clamp(15px, 4vw, 16px);
+    font-weight: 600;
+    color: var(--terracotta-dark);
+    animation-delay: 0.2s;
+  }
+
+  .about {
+    margin: 16px 0 32px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 360px;
+    animation-delay: 0.28s;
+  }
+
+  .links {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .link-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    padding: 16px 18px;
+    background: var(--card);
+    border-radius: 18px;
+    text-decoration: none;
+    color: var(--ink);
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(58, 51, 44, 0.06);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    opacity: 0;
+    transform: translateY(14px);
+    animation: fadeUp 0.7s ease forwards;
+  }
+
+  .link-card:nth-child(1) { animation-delay: 0.36s; }
+  .link-card:nth-child(2) { animation-delay: 0.44s; }
+  .link-card:nth-child(3) { animation-delay: 0.52s; }
+
+  .link-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(58, 51, 44, 0.14);
+  }
+
+  .link-card:active {
+    transform: scale(0.96);
+    box-shadow: var(--shadow-active);
+  }
+
+  .icon {
+    flex: 0 0 auto;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icon svg { width: 22px; height: 22px; }
+
+  .icon--whatsapp { background: #E9F3E4; color: #4C9A2A; }
+  .icon--telegram { background: #E3EFFB; color: #2B8CD9; }
+  .icon--linkedin { background: #E4ECF7; color: #2A5C9A; }
+
+  .link-text { text-align: left; flex: 1; }
+
+  .link-title {
+    font-weight: 600;
+    font-size: 15px;
+    margin: 0;
+  }
+
+  .link-sub {
+    margin: 2px 0 0;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  .chevron {
+    flex: 0 0 auto;
+    color: var(--ink-soft);
+    opacity: 0.6;
+  }
+
+  footer {
+    margin-top: 40px;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards;
+    animation-delay: 0.6s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .blob { animation: none; }
+    .fade-up, h1, .role, .about, .link-card, footer, .avatar {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    .link-card, .link-card:active { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="blobs" aria-hidden="true">
+    <div class="blob blob--1"></div>
+    <div class="blob blob--2"></div>
+    <div class="blob blob--3"></div>
+  </div>
+
+  <main>
+    <div class="avatar fade-up">CL</div>
+
+    <h1 class="fade-up">cheehow lee</h1>
+    <p class="role fade-up">Freelance Workflow Transformation Consultant</p>
+
+    <p class="about fade-up">
+      I help small and medium companies cut through busywork with automation and AI,
+      so they can focus on the work that actually matters.
+    </p>
+
+    <nav class="links" aria-label="Contact links">
+      <a class="link-card" href="https://wa.me/6588214823" target="_blank" rel="noopener">
+        <span class="icon icon--whatsapp" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.79 14.06c-.24.68-1.4 1.32-1.93 1.38-.5.06-1.12.09-1.8-.11-.42-.13-.96-.3-1.65-.6-2.9-1.25-4.8-4.17-4.94-4.36-.15-.19-1.18-1.57-1.18-3 0-1.42.75-2.13 1.01-2.42.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.65.5.24.58.82 2 .89 2.15.07.15.12.32.02.51-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.61-.07.17-.19.71-.83.9-1.11.19-.28.37-.23.63-.14.26.1 1.64.77 1.92.91.28.14.47.21.54.33.07.12.07.68-.17 1.35z"/></svg>
+        </span>
+        <span class="link-text">
+          <p class="link-title">WhatsApp</p>
+          <p class="link-sub">Message me directly</p>
+        </span>
+        <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </a>
+
+      <a class="link-card" href="https://t.me/cheehowlee" target="_blank" rel="noopener">
+        <span class="icon icon--telegram" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.4 2.9 11.6c-1.3.5-1.3 1.2-.2 1.5l4.9 1.5 1.9 5.8c.2.6.4.8.8.8.4 0 .6-.2.9-.5l2.2-2.1 4.6 3.4c.8.5 1.4.2 1.6-.7l3-14c.3-1.2-.4-1.7-1.3-1.3zM8.7 14.3l9.1-5.7c.4-.3.8-.1.5.2l-7.6 6.9-.3 3.1-1.3-4.5z"/></svg>
+        </span>
+        <span class="link-text">
+          <p class="link-title">Telegram</p>
+          <p class="link-sub">@cheehowlee</p>
+        </span>
+        <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </a>
+
+      <a class="link-card" href="https://linkedin.com/in/cheehowlee" target="_blank" rel="noopener">
+        <span class="icon icon--linkedin" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.9 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zM8.5 8h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-6.9c0-1.65-.03-3.77-2.3-3.77-2.3 0-2.65 1.8-2.65 3.65V23h-4V8z"/></svg>
+        </span>
+        <span class="link-text">
+          <p class="link-title">LinkedIn</p>
+          <p class="link-sub">linkedin.com/in/cheehowlee</p>
+        </span>
+        <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </a>
+    </nav>
+
+    <footer>Let's build something calmer, together.</footer>
+  </main>
+
+</body>
+</html>
