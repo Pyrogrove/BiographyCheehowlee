@@ -1,3 +1,14 @@
+---
+project_name: BiographyCheehowlee
+repository: https://github.com/Pyrogrove/BiographyCheehowlee
+project_type: static-site
+lifecycle: active
+stack: HTML/CSS/JS (static, no framework, no build tool)
+tags: [link-in-bio, static-site, qr-code, personal-website]
+deployment: vercel (github-integrated auto-deploy on push to main; live at biographycheehowlee.vercel.app, verified 2026-08-18 this session — UNVERIFIED from repo/Git history alone)
+last_verified: 2026-08-18
+---
+
 # PROJECT.md
 
 PyroGrove project metadata. Facts below are verifiable from this repository and its Git history unless marked `UNVERIFIED`.
