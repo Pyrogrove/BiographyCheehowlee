@@ -5,7 +5,8 @@ project_type: static-site
 lifecycle: active
 stack: HTML/CSS/JS (static, no framework, no build tool)
 tags: [link-in-bio, static-site, qr-code, personal-website]
-deployment: vercel (github-integrated auto-deploy on push to main; live at biographycheehowlee.vercel.app, verified 2026-08-18 this session — UNVERIFIED from repo/Git history alone)
+deployment: vercel (github-integrated auto-deploy on push to main; no build command)
+deployment_url: https://biographycheehowlee.vercel.app (UNVERIFIED from repo/Git history — not recorded in tracked files)
 last_verified: 2026-08-18
 ---
 
